@@ -58,6 +58,10 @@ char Player::FindUsableTorch() {
 void Player::ChangeScene(kit::Engine::KitEngine* _engine) {
 	switch (mc_sceneNumber) {
 	case static_cast<unsigned char>(SCENE::Title) :
+		_engine->ChangeScene(std::make_shared<SelectDevice>());
+		break;
+
+	case static_cast<unsigned char>(SCENE::SelectDevice) :
 		_engine->ChangeScene(std::make_shared<Tutorial>());
 		break;
 
@@ -70,12 +74,12 @@ void Player::ChangeScene(kit::Engine::KitEngine* _engine) {
 void Player::ControlTitle(kit::Engine::KitEngine* _engine) {
 	// GamePad press start button or Keyboard enter key
 	if (static_cast<unsigned int>(kit::GamePad_Buttons::Start) & mc_devices.mc_gamePad.GetState(md_gamePadNumber).wButtons || mc_devices.muptr_keyboard->GetState().Enter) {
-
+		ChangeScene(_engine);
 	}
 }
 
 void Player::ChangeMode() {
-	if (true == mb_SelectedGamePad) {
+	if (mb_SelectedGamePad) {// true
 		if (static_cast<char>(MODE::Player) & mc_changeModeFlag) {
 			mfunc_UpdateFunc = &Player::GPControlGameMain;
 		}
@@ -83,12 +87,12 @@ void Player::ChangeMode() {
 			mfunc_UpdateFunc = &Player::GPControlTorch;
 		}
 	}
-	else {// false == mb_selectedGamePad
+	else {// false
 		if (static_cast<char>(MODE::Player) & mc_changeModeFlag) {
-
+			mfunc_UpdateFunc = &Player::KeyControlGameMain;
 		}
 		if (static_cast<char>(MODE::Torch) & mc_changeModeFlag) {
-
+			mfunc_UpdateFunc = &Player::KeyControlTorch;
 		}
 	}
 }
@@ -106,6 +110,10 @@ void Player::ChangeMode(char _mode) {
 	default:
 		mc_changeModeFlag = static_cast<char>(MODE::Player);
 	}
+}
+
+void Player::Jump() {
+
 }
 
 void Player::GPMove() {
@@ -147,7 +155,13 @@ void Player::KeyControlGameMain(kit::Engine::KitEngine* _engine) {
 	}
 }
 
+void Player::KeyControlTorch(kit::Engine::KitEngine*) {
+	mvec_torchs[mc_isActiveTorchsNumber]->KeyControl(&mc_devices);
+}
+
 void Player::Update(kit::Engine::KitEngine* _engine) {
-	ChangeMode();
+	if (static_cast<char>(SCENE::Title) != mc_sceneNumber || static_cast<char>(SCENE::SelectDevice) != mc_sceneNumber) {
+		ChangeMode();
+	}
 	(this->*mfunc_UpdateFunc)(_engine);
 }

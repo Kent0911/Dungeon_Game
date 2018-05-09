@@ -14,6 +14,7 @@
 #include "../../Library/DirectXTK/include/Keyboard.h"
 #include "../GameObjects/Character/Character.h"
 #include "../Scenes/Tutorial/Tutorial.h"
+#include "../Scenes/SelectDevice/SelectDevice.h"
 #include "../Scenes/GameMain/GameMain.h"
 
 extern class Torch;
@@ -66,15 +67,20 @@ private:
 	void ControlTitle(kit::Engine::KitEngine* _engine);
 
 	void ChangeMode();
-	void ChangeMode(char _mode);
+	void Jump();
 	void GPMove();
 	void GPControlGameMain(kit::Engine::KitEngine* _engine);
 	void GPControlTorch(kit::Engine::KitEngine*);
 	void KeyMove();
 	void KeyControlGameMain(kit::Engine::KitEngine* _engine);
+	void KeyControlTorch(kit::Engine::KitEngine*);
 public:
+	void ChangeMode(char _mode);
 	inline DWORD GetDword() const {
 		return md_gamePadNumber;
+	}
+	inline void SetSceneNumber(const char _sceneNumber) {
+		mc_sceneNumber = _sceneNumber;
 	}
 	inline void SetModeFlag(const char _flag) {
 		mc_changeModeFlag = _flag;
