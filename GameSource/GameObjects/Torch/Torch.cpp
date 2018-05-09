@@ -65,7 +65,7 @@ void Torch::TurnOnLight() {
 }
 
 void Torch::Update() {
-
+	mc_circle.mp_center = CastVec2Pos(&mvec_position);
 }
 
 void Torch::Render() {
