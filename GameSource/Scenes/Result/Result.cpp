@@ -2,6 +2,7 @@
 
 Result::Result() {
 	mc_sceneNumber = static_cast<unsigned char>(SCENE::Result);
+	g_player.GetInstance().SetSceneNumber(mc_sceneNumber);
 }
 
 Result::~Result() {

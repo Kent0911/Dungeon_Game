@@ -2,6 +2,7 @@
 
 Title::Title() {
 	mc_sceneNumber = static_cast<unsigned char>(SCENE::Title);
+	g_player.GetInstance().SetSceneNumber(mc_sceneNumber);
 }
 
 Title::~Title() {

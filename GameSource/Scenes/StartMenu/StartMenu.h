@@ -6,6 +6,7 @@
 
 #include "../../../KitEngine/SceneManager/Scene/Scene.h"
 #include "../../Configurations/GameConfiguration/GameConfiguration.h"
+#include "../../Player/Player.h"
 
 class StartMenu :public kit::Engine::Scene {
 private:
