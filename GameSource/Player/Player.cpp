@@ -10,24 +10,24 @@ Player::Player() {
 
 void Player::GameSetUp() {
 	switch (mc_selectedDifficulty) {
-	case static_cast<unsigned char>(DIFFICULTY::Tutorial) :
-		StockTorchs(static_cast<unsigned char>(DIFFICULTY::Tutorial));
+	case static_cast<char>(DIFFICULTY::Tutorial) :
+		StockTorchs(static_cast<char>(DIFFICULTY::Tutorial));
 		StockLeadingInsects(static_cast<unsigned char>(DIFFICULTY::Tutorial));
 		break;
 
-	case static_cast<unsigned char>(DIFFICULTY::Easy) :
-		StockTorchs(static_cast<unsigned char>(STOCK_TORCHS::Easy));
-		StockLeadingInsects(static_cast<unsigned char>(STOCK_LEADINGINSECT::Easy));
+	case static_cast<char>(DIFFICULTY::Easy) :
+		StockTorchs(static_cast<char>(STOCK_TORCHS::Easy));
+		StockLeadingInsects(static_cast<char>(STOCK_LEADINGINSECT::Easy));
 		break;
 
-	case static_cast<unsigned char>(DIFFICULTY::Normal):
-		StockTorchs(static_cast<unsigned char>(STOCK_TORCHS::Normal));
-		StockLeadingInsects(static_cast<unsigned char>(STOCK_LEADINGINSECT::Normal));
+	case static_cast<char>(DIFFICULTY::Normal):
+		StockTorchs(static_cast<char>(STOCK_TORCHS::Normal));
+		StockLeadingInsects(static_cast<char>(STOCK_LEADINGINSECT::Normal));
 		break;
 
-	case static_cast<unsigned char>(DIFFICULTY::Hard) :
-		StockTorchs(static_cast<unsigned char>(STOCK_TORCHS::Hard));
-		StockLeadingInsects(static_cast<unsigned char>(STOCK_LEADINGINSECT::Hard));
+	case static_cast<char>(DIFFICULTY::Hard) :
+		StockTorchs(static_cast<char>(STOCK_TORCHS::Hard));
+		StockLeadingInsects(static_cast<char>(STOCK_LEADINGINSECT::Hard));
 		break;
 	}
 }
@@ -69,6 +69,7 @@ void Player::ChangeScene(kit::Engine::KitEngine* _engine) {
 		_engine->ChangeScene(std::make_shared<GameMain>());
 		break;
 	}
+	
 }
 
 void Player::ControlTitle(kit::Engine::KitEngine* _engine) {

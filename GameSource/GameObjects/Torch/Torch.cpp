@@ -38,7 +38,7 @@ void Torch::GPControl(Devices* _device) {
 }
 
 void Torch::KeyMoveTorch(Devices* _device) {
-	kit::vec2 mousePos = { _device->muptr_mouse->GetState().x, _device->muptr_mouse->GetState().y };
+	kit::vec2 mousePos = { (float)_device->muptr_mouse->GetState().x, (float)_device->muptr_mouse->GetState().y };
 	mvec_position.x = mousePos.x;
 	mvec_position.y = mousePos.y;
 }
