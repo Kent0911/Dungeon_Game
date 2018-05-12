@@ -24,7 +24,7 @@ extern Player g_player;
 //--------------------------------------------------------------------------------------------------------------------------------------------
 kit::Engine::Config SetUp() {
 	kit::Engine::Config config;
-	config.mlp_str = GAME_TITLE;
+	config.mlp_str = (LPSTR)GAME_TITLE;
 	config.mc_frameRate.Numerator(static_cast<UINT>(FRAME_RATE::Numerator));
 	config.mv_windowSize = g_windowSize;
 	config.msptr_startScene = START_SCENE;

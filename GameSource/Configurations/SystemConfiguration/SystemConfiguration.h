@@ -1,8 +1,10 @@
 #pragma once
 
 #include "../../../Library/KitLib/include/Kitlib.h"
+#include "../../../Library/DirectXTK/include/SpriteFont.h"
+#include "../../../KitEngine/Render/Render.h"
 
-#define GAME_TITLE (LPSTR)"Dungeon_Game"
+#define GAME_TITLE "Dungeon_Game"
 #define GAMEPAD_THRESHOLD 100
 
 enum class WINDOW {
@@ -25,3 +27,4 @@ enum class DEVICE :bool {
 	GamePad = true,
 	KeyboradAndMouse = false
 };
+
