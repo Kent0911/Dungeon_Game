@@ -7,12 +7,12 @@
 #include "../../../KitEngine/SceneManager/Scene/Scene.h"
 #include "../../Configurations/GameConfiguration/GameConfiguration.h"
 #include "../../Configurations/SystemConfiguration/SystemConfiguration.h"
-#include "../../../Library/DirectXTK/include/SpriteFont.h"
+#include "../../../KitEngine/Render/Render.h"
 
 class SelectDevice :public kit::Engine::Scene {
 private:
 	char										mc_selectDevice;
-	std::unique_ptr<DirectX::SpriteFont>		muptr_Font;
+	std::vector<kit::Engine::Font>				mvec_fonts;
 
 public:
 	SelectDevice();

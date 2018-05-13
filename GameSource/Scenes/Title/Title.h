@@ -15,7 +15,7 @@
 
 class Title :public kit::Engine::Scene {
 private:
-	kit::Engine::Font			mc_font;
+	std::vector<kit::Engine::Font>	mvec_fonts;
 
 public:
 	Title();
